@@ -25,12 +25,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.post('/offer/add', upload.single('img'));
 app.put('/offer/edit', upload.single('img'));
+app.post('/service/add', upload.single('img'));
+app.put('/service/edit', upload.single('img'));
 
 //////////////////////////////////////////
 //routes
 const offerRoute = require("./routes/offer");
+const servRoute = require("./routes/serv");
+
 
 app.use("/offer", offerRoute);
+app.use("/service", servRoute);
+
 //db onnection
 dbConnection();
 const PORT = process.env.PORT || 3000;
