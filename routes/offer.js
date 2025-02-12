@@ -1,9 +1,10 @@
 const express = require('express');
 const route = express.Router();
 const offerController = require("../controllers/offer");
-route.post("/add", offerController.add);
+const isAdmin = require("../middlewares/admin").isAuth;
+route.post("/add", isAdmin, offerController.add);
 route.get("/get-all", offerController.getAll);
 route.get("/get-by-id/:oId", offerController.getById);
-route.put("/edit", offerController.edit);
-route.delete("/delete/:oId", offerController.delete);
+route.put("/edit", isAdmin, offerController.edit);
+route.delete("/delete/:oId", isAdmin, offerController.delete);
 module.exports = route

@@ -27,16 +27,19 @@ app.post('/offer/add', upload.single('img'));
 app.put('/offer/edit', upload.single('img'));
 app.post('/service/add', upload.single('img'));
 app.put('/service/edit', upload.single('img'));
+app.post('/prod/add', upload.single('img'));
+app.put('/prod/edit', upload.single('img'));
 
 //////////////////////////////////////////
 //routes
 const offerRoute = require("./routes/offer");
 const servRoute = require("./routes/serv");
-
-
+const prodRoute = require("./routes/product");
+const adminRoute = require("./routes/admin");
 app.use("/offer", offerRoute);
 app.use("/service", servRoute);
-
+app.use("/prod", prodRoute);
+app.use("/admin", adminRoute);
 //db onnection
 dbConnection();
 const PORT = process.env.PORT || 3000;
