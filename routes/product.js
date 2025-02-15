@@ -7,5 +7,5 @@ route.post("/add", isAdmin, prodController.add);
 route.get("/get-all", prodController.getAll);
 route.get("/get-by-id/:pId", prodController.getById);
 route.put("/edit", isAdmin, prodController.edit);
-route.delete("/delete/:pId", isAdmin, prodController.delete);
+route.get("/delete/:pId", isAdmin, prodController.delete);
 module.exports = route

@@ -4,14 +4,17 @@ const morgan = require("morgan");
 dotenv.config({ path: ".env" });
 const { dbConnection } = require("./db/mongoose");
 const bodyParser = require('body-parser');
+const cookieParser = require("cookie-parser");
 const multer = require('multer');
 const app = express();
 
 ///////////////////////////////////////////
+app.set("view engine", "ejs");
 app.use(morgan("combined"));
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser());
 //////////////////////////////////////////
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

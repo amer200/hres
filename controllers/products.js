@@ -11,10 +11,7 @@ exports.add = async (req, res) => {
             desc: desc
         })
         await newProd.save()
-        return res.status(200).json({
-            msg: "ok",
-            data: newProd
-        })
+        res.redirect("/admin");
     } catch (error) {
         console.log(error.message);
     }
@@ -68,9 +65,10 @@ exports.delete = async (req, res) => {
         const prod = await Prod.findById(pId);
         await fs.unlink(prod.img);
         await Prod.findByIdAndDelete(pId);
-        return res.status(200).json({
-            msg: "ok"
-        })
+        res.redirect("/admin/")
+        // return res.status(200).json({
+        //     msg: "ok"
+        // })
     } catch (error) {
         console.log(error.message);
     }

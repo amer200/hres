@@ -8,10 +8,7 @@ exports.add = async (req, res) => {
             img: img.path
         })
         await newOffer.save()
-        return res.status(200).json({
-            msg: "ok",
-            data: newOffer
-        })
+        res.redirect("/admin/offers")
     } catch (error) {
         console.log(error.message);
     }
@@ -61,9 +58,8 @@ exports.delete = async (req, res) => {
         const offer = await Offer.findById(oId);
         await fs.unlink(offer.img);
         await Offer.findByIdAndDelete(oId);
-        return res.status(200).json({
-            msg: "ok"
-        })
+        res.redirect("/admin/offers")
+
     } catch (error) {
         console.log(error.message);
     }

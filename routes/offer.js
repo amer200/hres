@@ -6,5 +6,5 @@ route.post("/add", isAdmin, offerController.add);
 route.get("/get-all", offerController.getAll);
 route.get("/get-by-id/:oId", offerController.getById);
 route.put("/edit", isAdmin, offerController.edit);
-route.delete("/delete/:oId", isAdmin, offerController.delete);
+route.get("/delete/:oId", isAdmin, offerController.delete);
 module.exports = route

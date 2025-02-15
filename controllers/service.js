@@ -9,10 +9,7 @@ exports.add = async (req, res) => {
             serv: serv
         })
         await newServ.save()
-        return res.status(200).json({
-            msg: "ok",
-            data: newServ
-        })
+        res.redirect("/admin/servs")
     } catch (error) {
         console.log(error.message);
     }
@@ -64,9 +61,7 @@ exports.delete = async (req, res) => {
         const serv = await Serv.findById(sId);
         await fs.unlink(serv.img);
         await Serv.findByIdAndDelete(sId);
-        return res.status(200).json({
-            msg: "ok"
-        })
+        res.redirect("/admin/servs")
     } catch (error) {
         console.log(error.message);
     }
